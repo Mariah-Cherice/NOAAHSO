@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="azure-eventhubs-0.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.microsoft.azure/azure-eventhubs/0.6.0/d5c74d06963f60d3896db5967202fbfdbaf2e8d9/azure-eventhubs-0.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.microsoft.azure/azure-eventhubs/0.6.0/5a82f22aa6287901d549c1bfe5404dc45a3e67f4/azure-eventhubs-0.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

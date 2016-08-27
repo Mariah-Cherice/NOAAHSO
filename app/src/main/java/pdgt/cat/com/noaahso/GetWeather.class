@@ -1,0 +1,83 @@
+package pdgt.cat.com.noaahso.;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
+import org.json.JSONObject;
+
+
+//import org.json.JSONObject;
+
+public class GetWeather {
+    private String lon;
+    private String lat;
+    private StringBuilder builder;
+    // authorization token
+    // private String token = "QfbEazZooNYqPxddiMAowQWFzacLasPe";
+    // private String baseUrl = "http://www.ncdc.noaa.gov/cdo-web/api/v2/";
+    private String key = "9af43623a5459ac3";
+    private String baseUrl = "http://api.wunderground.com/api/" + key + "/conditions/q/";// 35.689,139.691.json";
+    private String urlStr;
+    private InputStream is = null;
+    public JSONObject dat = new JSONObject();
+
+
+    public GetWeather(String latitude, String longitude) {
+        lat = latitude;
+        lon = longitude;
+
+        urlStr = baseUrl + lat + "," + lon + ".json";
+        //System.out.println(urlStr);
+    }
+
+    public JSONObject weather() {
+
+        try {
+            URL url = new URL(urlStr);
+            URLConnection con = url.openConnection();
+            if (con instanceof HttpURLConnection) {
+
+                HttpURLConnection httpURLConnection = (HttpURLConnection) con;
+                httpURLConnection.setRequestMethod("GET");
+                int response = -1;
+                // httpURLConnection.setRequestProperty("token", token);
+                httpURLConnection.connect();
+
+                response = httpURLConnection.getResponseCode();
+                if (response == HttpURLConnection.HTTP_OK) {
+                    //System.out.println("Y");
+                    is = httpURLConnection.getInputStream();
+                    //Reader reader = new InputStreamReader(is);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+                    builder = new StringBuilder();
+                    String line;
+
+                    while((line = br.readLine()) != null){
+                        //String Str = line.toString();
+
+
+                        //if (line.contains("temp_f") || line.contains("weather") || line.contains("precip")) {
+                        builder.append(line);
+
+                        //}
+
+                    }
+
+                    br.close();
+                }
+            }
+
+            JSONObject data = new JSONObject(builder.toString());//return is;
+
+            dat.put("Temperature",data.getJSONObject("current_observation").getInt("temp_f"));
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+        return dat;
+        //return builder.toString();
+    }
+
+
+}

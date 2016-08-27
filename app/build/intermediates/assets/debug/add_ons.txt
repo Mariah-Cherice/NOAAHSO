@@ -1,0 +1,46 @@
+Weather Feature:
+    •	CSE changes needed to implement:
+            o	All UI stuff, type of adapter planning to be used.
+            o	Currently using horizontal scrollview
+            o	If some custom adapter that correlates with the timeline seekbar then changes will be needed there. All of the data is there.
+            o	Shifts hours set will control how many hours is forecasted (can only forecast 12 hours ahead anyways)
+            o	Database changes
+            o	How often will app call api? Probably could hardcode an update timer and give the foreman a button to click if they need an immediate update for whatever reason (maybe during severe weather warnings…app could automatically change update time during severe weather, that’s always an option)
+            o	When project is set up, may want to use the location established there to call api
+    •	If processing power is an issue, weather may just need to be used for foreman
+
+Haul Route/ Map:
+    •	How the per cycle data will be collected into one list of LatLngs representing a full cycle
+            o	Memory problems with long haul routes?
+    •	Currently takes in two routes and averages them/shows deviations
+    •	Will need to add latlngs of load/unload events to “close” out routes and because these locations would have been averaged out possibly
+    •	Currently clearing out old averaged lines, may want to store those latlngs with its associated cycle to be used for rewind feature
+    •	Passing averaged routes and deviation to the foreman
+    •	Handle whether or not foreman sees all deviations at once
+            o	May one checkbox overlay that allows foremen to just see one operators haul routes and deviation
+            o	More than one check will show averages of averages with deviations
+                    	Maybe can put pop-up marker where there are deviations with tag saying who did the deviation
+                    	Or highlight deviated operators name on checkbox overlay
+                    	Or both
+    •	Database changes
+    •	Overlay: Customizable features/ check boxes
+        o	Rough Round Events
+        o	Queuing
+        o	Idle & Long Idle
+        o	Individual Machine Health
+    •	Color coding
+    •	Foreman drawing route
+            o	Attached to goal?
+            o	Would have to only allow them to draw one route at a time and assign assets, and then be able to draw next route and assign assets. After drawing one route, probably want to just save the raw latlngs and store them in database so you can reuse that variable for next route.
+                    	After saving a route and moving on to draw next route (if they even need to draw a second route), they should be able to see the previously saved route for reference (possibly make it a lighter color)
+            o	If there is a foreman drawn route, then said route should always be base route being fed into averaging algorithm and not be allowed to be altered by other routes.
+                    	The previous routes will not be averaged together. If foreman has established a route then maps should only show deviations from that route
+    •	The async class’s constructor takes in Boolean to tell if foreman drew the route. If there is a foreman route then it won’t update averaged baseRoute. You will have to establish a global foreman route and pass that as the base route for when the class is initialized
+
+
+Dump zone added to goal push from foreman- button that allows him to set dump zone
+    o	Eventually haul route will be added to goal push
+    o	Probably should be able to assign all assets in goal or individually assign assets
+    o	Right panel selecting dump zone
+    o	Movable radius with vertical slider
+

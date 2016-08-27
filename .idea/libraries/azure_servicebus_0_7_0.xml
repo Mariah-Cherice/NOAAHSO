@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="azure-servicebus-0.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.microsoft.azure/azure-servicebus/0.7.0/c1cc935cc5a5771a45049f28eff22728b4d9fcc/azure-servicebus-0.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.microsoft.azure/azure-servicebus/0.7.0/e11a462fc524371f8e75bb7457abc92c6e0c3794/azure-servicebus-0.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
