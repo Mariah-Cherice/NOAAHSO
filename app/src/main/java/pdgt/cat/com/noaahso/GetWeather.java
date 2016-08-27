@@ -108,6 +108,7 @@ public class GetWeather {
             String icon_url = curr_obs.getString("icon_url");
             long curr_epoch = curr_obs.getLong("local_epoch");
 
+            int ha = 1;
             finalJson.put("Current Temperature",temp_f.toString());
             finalJson.put("Current Conditions", weat);
             finalJson.put("Current Icon", icon_url);
